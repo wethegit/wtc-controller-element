@@ -11,6 +11,8 @@
     Edited          2014-05-05 16:51:10
     Version         0.1
 */
+; 'use strict';
+
 (function()
 {
   var _base;
