@@ -14,18 +14,18 @@
 class ElementController {
   constructor(element) {
     this.element = element;
-    this.element.data = {};
+    this.element.data = this.element.data || {};
     this.element.data.controller = this;
     this.element.data.instanciated = true;
   }
 
   elementExistsInDOM() {
     let element, exists;
-    exists = this.element && this.element[0];
+    exists = this.element || null;
     if (!exists) {
       return false;
     }
-    element = this.element[0];
+    element = this.element;
     while (element) {
       if (element === document) {
         return true;
