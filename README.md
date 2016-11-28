@@ -14,7 +14,10 @@ ExecuteControllers.registerController('TestController', TestController);
 ```
 
 #### How to instanciate controllers.
-There are 2 options.
+There are 2 options, but first, import it:
+```javascript
+import {ExecuteControllers}  from 'wtc-controller-element';
+```
 ##### All at once
 This will instanciate all elements with a **[data-controller]** attribute.
 ```javascript
@@ -40,6 +43,9 @@ class TestController extends ElementController {
     super(element);
   }
 }
+
+/* Don't forget to register it */
+ExecuteControllers.registerController('TestController', TestController);
 ```
 
 ### bower
