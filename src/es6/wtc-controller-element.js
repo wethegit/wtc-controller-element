@@ -58,11 +58,19 @@ class ExecuteControllers {
 
   /**
    * Registers controllers
-   * @param {String} controllerName - Name of the controller
    * @param {Class}  controller     - Controller.
+   * @param {string} [controllerName=''] - Name of the controller
    */
-  static registerController(controllerName, controller) {
-    controllersList.set(controllerName, controller);
+  static registerController(controller, controllerName = '') {
+    if(!controllerName) {
+      controllerName = controller.name;
+    }
+
+    if (controllersList.has(controllerName)) {
+      console.warn(`Controller ${controllerName} is already registered.`);
+    } else {
+      controllersList.set(controllerName, controller);
+    }
   }
 
   /**
