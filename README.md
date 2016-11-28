@@ -26,9 +26,9 @@ ExecuteControllers.instanciateAll();
 ```
 
 ##### Explicit
-Just pass in the element and the name of the registered controller.
+Just pass in the element and the name of the registered controller or the controller itself.
 ```javascript
-ExecuteControllers.instanciate(document.getElementById('id'), 'TestController');
+ExecuteControllers.instanciate(document.getElementById('id'), ['TestController'|TestController]);
 ```
 
 ### ElementController
