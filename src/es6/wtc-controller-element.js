@@ -41,14 +41,15 @@ class ExecuteControllers {
     try {
       let controller = controllerName;
 
-      if (typeof controllerName === 'string' && controllersList.has(controllerName)) {
-        controller = controllersList.get(controllerName);
-      } else {
-        throw new Error (`The controller '${controllerName}' has not been registered. Please make sure the controller is registering itself using ExecuteController.registerController('NAME', CLASS).`)
+      if (typeof controllerName === 'string') {
+        if (controllersList.has(controllerName)) {
+          controller = controllersList.get(controllerName);
+        } else {
+          throw new Error (`The controller '${controllerName}' has not been registered. Please make sure the controller is registering itself using ExecuteController.registerController(CLASS, 'OPTIONAL-NAME').`);
+        }
       }
 
       let instance = new controller(el);
-      el.data.controller = instance;
 
       return el;
     } catch (_error) {
