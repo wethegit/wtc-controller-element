@@ -1,6 +1,6 @@
 {
   "name": "wtc-controller-element",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Generic element controller. Binds an element to a controller.",
   "main": "dist/wtc-controller-element.js",
   "scripts": {
