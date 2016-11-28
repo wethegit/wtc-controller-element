@@ -33,13 +33,13 @@ class ExecuteControllers {
   /**
    * Instanciate controller and saves it in the data attribute.
    * @param {DOMNode} el             - Element.
-   * @param {String}  controllerName - Name of the registered controller.
+   * @param {string|class}  controllerName - Name of the registered controller, or a Class.
    *
    * @return {DOMNode} Element.
    */
   static instanciate(el = null, controllerName = null) {
     try {
-      let controller = null;
+      let controller = controllerName;
 
       if (typeof controllerName === 'string' && controllersList.has(controllerName)) {
         controller = controllersList.get(controllerName);
