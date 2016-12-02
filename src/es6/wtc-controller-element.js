@@ -63,15 +63,21 @@ class ExecuteControllers {
    * @param {string} [controllerName=''] - Name of the controller
    */
   static registerController(controller, controllerName = '') {
-    if(!controllerName) {
-      controllerName = controller.name;
+    try {
+      if (!controllerName) {
+        throw `Controller name is required. Ex: ExecuteControllers.registerController(TestController, 'TestController');`;
+      }
+
+      if (controllersList.has(controllerName)) {
+        console.warn(`Controller ${controllerName} is already registered.`);
+      } else {
+        controllersList.set(controllerName, controller);
+      }
+    }
+    catch (e) {
+
     }
 
-    if (controllersList.has(controllerName)) {
-      console.warn(`Controller ${controllerName} is already registered.`);
-    } else {
-      controllersList.set(controllerName, controller);
-    }
   }
 
   /**

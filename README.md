@@ -10,9 +10,9 @@ ExecuteController is a static class used to register and instanciate controllers
 Inside your module, **BEFORE** exporting it:
 ```javascript
 // Register
-ExecuteControllers.registerController(TestController, '[OPTIONAL-NAME]');
+ExecuteControllers.registerController(TestController, '[Name]');
 ```
-If the name for the controller is left empty, the name of the controller will be used as default.
+As a convention, please use the name as the same name of the controller.
 
 #### How to instanciate controllers.
 There are 2 options, but first, import it:
@@ -46,7 +46,7 @@ class TestController extends ElementController {
 }
 
 /* Don't forget to register it */
-ExecuteControllers.registerController(TestController);
+ExecuteControllers.registerController(TestController, 'TestController');
 ```
 
 ### bower
