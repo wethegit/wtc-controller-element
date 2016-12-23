@@ -26,6 +26,14 @@ class ExecuteControllers {
     if (typeof query === 'string') {
       let els = document.querySelectorAll(query);
     } else if (typeof query === 'object') {
+      if (!query.hasOwnProperty('el')) {
+        throw 'Instanciate all is missing the DOMNode. Ex: instanciateAll({el: DOMNode, query: "[data-controller]"})'
+      }
+
+      if (!query.hasOwnProperty('query')) {
+        query.query = '[data-controller]'
+      }
+
       let els = query.el.querySelectorAll(query.query);
     }
 
