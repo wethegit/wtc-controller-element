@@ -18,11 +18,16 @@ let controllersList = new Map();
 class ExecuteControllers {
   /**
    * Instanciate all the elements with registered controllers.
-   * @param {String} query         - Query used to select elements.
+   * @param {String|Object} query  - Can be a string, ex: '[data-controller]' or
+   *                                 an object, ex: {el: DOMNode, query: '[data-controller]'}
    * @param {String} controllerAtt - Attribute with the name of the controller.
    */
   static instanciateAll(query = '[data-controller]', controllerAtt = 'data-controller') {
-    let els = document.querySelectorAll(query);
+    if (typeof query === 'string') {
+      let els = document.querySelectorAll(query);
+    } else if (typeof query === 'object') {
+      let els = query.el.querySelectorAll(query.query);
+    }
 
     for (let i = 0; i < els.length; i++) {
       let op = els[i];
