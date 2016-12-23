@@ -23,9 +23,12 @@ class ExecuteControllers {
    * @param {String} controllerAtt - Attribute with the name of the controller.
    */
   static instanciateAll(query = '[data-controller]', controllerAtt = 'data-controller') {
+    let els = null;
+
     if (typeof query === 'string') {
-      let els = document.querySelectorAll(query);
-    } else if (typeof query === 'object') {
+      els = document.querySelectorAll(query);
+    }
+    else if (typeof query === 'object') {
       if (!query.hasOwnProperty('el')) {
         throw 'Instanciate all is missing the DOMNode. Ex: instanciateAll({el: DOMNode, query: "[data-controller]"})'
       }
@@ -34,12 +37,14 @@ class ExecuteControllers {
         query.query = '[data-controller]'
       }
 
-      let els = query.el.querySelectorAll(query.query);
+      els = query.el.querySelectorAll(query.query);
     }
 
-    for (let i = 0; i < els.length; i++) {
-      let op = els[i];
-      ExecuteControllers.instanciate(op, op.getAttribute(controllerAtt));
+    if (els.length > 0) {
+      for (let i = 0; i < els.length; i++) {
+        let op = els[i];
+        ExecuteControllers.instanciate(op, op.getAttribute(controllerAtt));
+      }
     }
   }
 
