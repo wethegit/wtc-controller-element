@@ -43,7 +43,11 @@ class ExecuteControllers {
     if (els.length > 0) {
       for (let i = 0; i < els.length; i++) {
         let op = els[i];
-        ExecuteControllers.instanciate(op, op.getAttribute(controllerAtt));
+        let cont = op.getAttribute(controllerAtt);
+
+        if (cont) {
+          ExecuteControllers.instanciate(op, op.getAttribute(controllerAtt));
+        }
       }
     }
   }
