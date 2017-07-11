@@ -60,9 +60,9 @@ class ExecuteControllers {
    * @return {DOMNode} Element.
    */
   static instanciate(el = null, controllerName = null, debug = false) {
+    let controller = controllerName;
+    
     try {
-      let controller = controllerName;
-
       if (typeof controllerName === 'string') {
         if (controllersList.has(controllerName)) {
           controller = controllersList.get(controllerName);
