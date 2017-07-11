@@ -46,7 +46,7 @@ class ExecuteControllers {
         let cont = op.getAttribute(controllerAtt);
 
         if (cont) {
-          ExecuteControllers.instanciate(op, op.getAttribute(controllerAtt));
+          ExecuteControllers.instanciate(op, op.getAttribute(controllerAtt), debug);
         }
       }
     }
@@ -59,7 +59,7 @@ class ExecuteControllers {
    *
    * @return {DOMNode} Element.
    */
-  static instanciate(el = null, controllerName = null) {
+  static instanciate(el = null, controllerName = null, debug = false) {
     try {
       let controller = controllerName;
 
