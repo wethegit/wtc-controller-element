@@ -22,7 +22,7 @@ class ExecuteControllers {
    *                                 an object, ex: {el: DOMNode, query: '[data-controller]'}
    * @param {String} controllerAtt - Attribute with the name of the controller.
    */
-  static instanciateAll(query = '[data-controller]', controllerAtt = 'data-controller') {
+  static instanciateAll(query = '[data-controller]', controllerAtt = 'data-controller', debug = false) {
     let els = null;
 
     if (typeof query === 'string') {
@@ -69,13 +69,21 @@ class ExecuteControllers {
         } else {
           throw new Error (`The controller '${controllerName}' has not been registered. Please make sure the controller is registering itself using ExecuteController.registerController(CLASS, 'OPTIONAL-NAME').`);
         }
+
+        if (!debug) {
+      
+          let instance = new controller(el);
+
+          return el;
+        }
       }
-
-      let instance = new controller(el);
-
-      return el;
     } catch (_error) {
       console.warn("Error: " + _error.message);
+    }
+
+    if (debug) {
+      let instance = new controller(el);
+      return el;
     }
   }
 
