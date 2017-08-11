@@ -78,7 +78,7 @@ class ExecuteControllers {
         }
       }
     } catch (_error) {
-      console.warn("Error: " + _error.message);
+      console.warn("Error: " + _error.message, _error.stack);
     }
 
     if (debug) {
