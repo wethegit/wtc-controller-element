@@ -64,6 +64,10 @@ class ExecuteControllers {
     
     try {
       if (typeof controllerName === 'string') {
+        if(el.data && el.data.instanciated) {
+          throw new Error (`The element with the controller '${controllerName}' has already been instanciated. This error is non-critical and just means that something has tried to instanciate it twice.`);
+        }
+
         if (controllersList.has(controllerName)) {
           controller = controllersList.get(controllerName);
         } else {
