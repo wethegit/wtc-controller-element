@@ -4,7 +4,7 @@
  *
  * @static
  * @author Marlon Marcello <marlon@wethecollective.com>
- * @version 1
+ * @version 1.1.0
  * @requirements
  * @created Nov 23, 2016
  */
@@ -76,7 +76,8 @@ class ExecuteControllers {
 
         if (!debug) {
       
-          let instance = new controller(el);
+          let parameters = el.dataset;
+          let instance = new controller(el, parameters);
 
           return el;
         }
@@ -86,7 +87,8 @@ class ExecuteControllers {
     }
 
     if (debug) {
-      let instance = new controller(el);
+      let parameters = el.dataset;
+      let instance = new controller(el, parameters);
       return el;
     }
   }
@@ -163,6 +165,3 @@ class ElementController {
     return false;
   }
 }
-
-// Export ElementController as defaultl
-export {ElementController as default, ExecuteControllers};
