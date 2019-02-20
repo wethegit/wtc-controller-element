@@ -165,3 +165,6 @@ class ElementController {
     return false;
   }
 }
+
+// Export ElementController as defaultl
+export {ElementController as default, ExecuteControllers};
